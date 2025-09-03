@@ -1,0 +1,38 @@
+/* ========= index.css (clean baseline) ========= */
+
+/* 전역 변수(색/폰트만) */
+:root {
+  --bg: #0b0b0b;         /* 페이지 배경색 (히어로 그라데이션 끝색과 일치 필요) */
+  --fg: #eaeaea;         /* 기본 글자색 */
+  --link: #ffffff;
+  --link-hover: #cccccc;
+  --font: system-ui, Avenir, Helvetica, Arial, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+}
+
+/* 기본 박스 모델 */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* 높이 체계 */
+html, body, #root { height: 100%; }
+
+/* 바디 베이스 */
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 링크 */
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); }
+
+/* 버튼(전역 충돌 방지: 최소화) */
+button { font: inherit; cursor: pointer; border: none; background: transparent; }
+
+/* 필요하면 라이트/다크 스킴을 쓰되, 레이아웃·색은 여기서 바꾸지 말 것 */
+/*@media (prefers-color-scheme: light) { }

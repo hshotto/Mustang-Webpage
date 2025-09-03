@@ -1,0 +1,91 @@
+:root{
+    --bg:#0b0b0b;    /* body 배경 = 그라데이션 끝색 */
+    --fg:#eaeaea;
+    --muted:#a8a8a8;
+    --btn-bg:#fff; --btn-fg:#111;
+  }
+  
+  /* 히어로: 한 화면 가득 + 타일 방지 + 커버 */
+  .fh-hero{
+    position:relative;
+    height:100dvh;
+    background-image:url('/mustang/Mustang_Dark_Horse.png');   /* ⬅ 파일명/경로 확인 */
+    background-position:center;
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-attachment:scroll;
+    overflow:hidden;
+  }
+  
+  /* 오버레이(가독성↑) */
+  .fh-veil,.fh-fade{ position:absolute; inset:0; pointer-events:none; }
+  .fh-veil{ background:rgba(0,0,0,.15); }
+  /* 끝색을 body와 동일하게 → 이음선 제거 */
+  .fh-fade{
+    background:linear-gradient(180deg, rgba(0,0,0,0) 92%, var(--bg) 100%);
+  }
+  
+  /* 좌하단 카피 */
+  .fh-hero-inner{
+    position:absolute;
+    left:clamp(20px, 6vw, 64px);
+    bottom:clamp(20px, 6vw, 64px);
+    display:flex; flex-direction:column; gap:8px;
+    max-width:640px; color:var(--fg);
+  }
+  .fh-eyebrow{ margin:0; opacity:.95; font-weight:700; letter-spacing:.6px; font-size:clamp(14px,2vw,18px); }
+  .fh-title{ margin:0; font-size:clamp(40px, 7vw, 72px); line-height:1.05; font-weight:900; }
+  .fh-price{ margin:2px 0 0; color:var(--muted); }
+  .fh-link{ color:#b5c7ff; width:max-content; }
+  .fh-actions{ margin-top:16px; }
+  .fh-cta{
+    appearance:none; border:0; border-radius:999px; padding:12px 18px; font-weight:700;
+    background:var(--btn-bg); color:var(--btn-fg);
+    box-shadow:0 8px 30px rgba(0,0,0,.35);
+  }
+  .fh-cta:hover{ filter:brightness(.95); }
+  
+  /* 히어로 아래 섹션 공통 레이아웃 */
+  .container{ max-width:1100px; margin:0 auto; padding:28px clamp(16px,4vw,40px); }
+  
+  /* 갤러리 그리드(비율 통일) */
+  .mx-gallery{ display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); }
+  .mx-shot{ margin:0; }
+  .mx-shot img{
+    width:100%;
+    aspect-ratio:16/9;
+    object-fit:cover;
+    display:block;
+    border-radius:12px;
+    border:1px solid #222;
+  }
+  .mx-shot figcaption{ margin-top:6px; opacity:.75; font-size:.9rem; }
+  /* ✅ 1) 차가 화면에 더 잘 들어오도록 기준점을 오른쪽으로 */
+.fh-hero{
+  /* 기존 값 유지 */
+  height: 100dvh;
+  background-image: url('/mustang/Mustang_Dark_Horse.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  /* 핵심: 기준점을 오른쪽으로 당겨서 전체 차가 보이도록 */
+  background-position: 80% center;  /* 50%→80% ; 필요시 85~90%로 더 오른쪽 */
+}
+
+/* ✅ 2) 화면 비율이 넓을수록(와이드) 더 오른쪽을 보이게 미세조정 */
+@media (min-aspect-ratio: 16/9) {
+  .fh-hero { background-position: 85% center; }
+}
+@media (min-aspect-ratio: 21/9) {
+  .fh-hero { background-position: 90% center; }
+}
+
+/* ✅ 3) 여전히 프론트 휠만 크게 보이면, 높이를 살짝 낮춰 “줌아웃” 효과 */
+@media (min-width: 1200px) {
+  .fh-hero { height: 90dvh; }   /* 100dvh → 90dvh; 85dvh까지 내려봐도 됨 */
+}
+
+/* (선택) 오버레이가 너무 진하면 약하게 */
+.fh-fade{
+  background: linear-gradient(180deg, rgba(0,0,0,0) 88%, var(--bg) 100%);
+}
