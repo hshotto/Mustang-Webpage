@@ -1,3 +1,4 @@
+import React from 'react';
 import { Menu as AntMenu } from 'antd';
 
 export default function Menu() {
@@ -41,6 +42,11 @@ export default function Menu() {
       }
     } else if (key === 'gallery') {
       const element = document.getElementById('gallery');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else if (key === 'history') {
+      const element = document.getElementById('history');
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
       }
