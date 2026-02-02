@@ -1,5 +1,5 @@
 import React from "react";
-import "./MustangHome.css"; // ⬅ 히어로/Gallery 스타일을 이 파일에서 직접 불러온다.
+import "../../styles/MustangHome.css"; // ⬅ 히어로/Gallery 스타일을 이 파일에서 직접 불러온다.
 
 export default function MustangHome() {
   const gallery = [
@@ -28,7 +28,7 @@ export default function MustangHome() {
 
       {/* 히어로 아래 컨텐츠 */}
       <main>
-        <section className="container">
+        <section id="specs" className="container">
           <h2 style={{marginTop:0}}>Highlights</h2>
           <ul style={{margin:0, paddingLeft:"1.2em", color:"var(--muted)"}}>
             <li>Iconic V8 option</li>
@@ -37,7 +37,7 @@ export default function MustangHome() {
           </ul>
         </section>
 
-        <section className="container">
+        <section id="gallery" className="container">
           <h2>Gallery</h2>
           <div className="mx-gallery">
             {gallery.map(g => (
